@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+interface Brand {
+  name: string;
+  discontinued: boolean;
+}
+
 @Component({
   selector: 'app-root', // <app-root></app-root>
   templateUrl: './app.component.html',
@@ -10,11 +15,28 @@ export class AppComponent {
 
   counter: number = 0;
 
-  brands: string[] = ['BMW', 'Mercedes', 'Audi', 'VW'];
+  brands: Brand[] = [
+    {
+      name: 'BMW',
+      discontinued: false,
+    },
+    {
+      name: 'Mercedes',
+      discontinued: true,
+    },
+    {
+      name: 'Audi',
+      discontinued: false,
+    },
+    {
+      name: 'VW',
+      discontinued: false,
+    },
+  ];
 
   increment(): void {
     this.counter++;
-    this.brands.push('Tesla');
+    this.brands.push({ name: "Tesla", discontinued: false });
   }
 
   decrement(): void {

@@ -15,13 +15,41 @@
 </ng-template>
 
 <ul>
-  <li *ngFor="let brand of brands">
-    {{ brand }}
-  </li>
   <!-- <li>BMW</li>
   <li>Mercedes</li>
   <li>Audi</li>
   <li>VW</li> -->
+
+  <!-- <li *ngFor="let brand of brands">
+    {{ brand.name }}
+  </li> -->
+
+  <ng-template ngFor let-brand [ngForOf]="brands">
+    <li *ngIf="!brand.discontinued">
+      {{ brand.name }}
+    </li>
+  </ng-template>
 </ul>
 
+<ng-template [ngIf]="counter > 0">
+  {{ title }}
+</ng-template>
 
+<ng-template [ngIf]="counter < 10" [ngIfElse]="decrementButton">
+  {{ title }}
+</ng-template>
+
+<p [ngSwitch]="counter">
+  <ng-template [ngSwitchCase]="1">
+    Counter min value.
+  </ng-template>
+
+  <ng-template [ngSwitchCase]="10">
+    Counter max value.
+  </ng-template>
+
+
+  <ng-template ngSwitchDefault>
+    Counter default value.
+  </ng-template>
+</p>
