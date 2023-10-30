@@ -1,4 +1,10 @@
-{{ title }}
+<app-navbar></app-navbar>
+
+<app-brand-list-group></app-brand-list-group>
+
+<app-footer></app-footer>
+
+<!-- {{ title }}
 
 {{ counter }}
 <button
@@ -15,14 +21,14 @@
 </ng-template>
 
 <ul>
-  <!-- <li>BMW</li>
+  <li>BMW</li>
   <li>Mercedes</li>
   <li>Audi</li>
-  <li>VW</li> -->
+  <li>VW</li>
 
-  <!-- <li *ngFor="let brand of brands">
+  <li *ngFor="let brand of brands">
     {{ brand.name }}
-  </li> -->
+  </li>
 
   <ng-template ngFor let-brand [ngForOf]="brands">
     <li *ngIf="!brand.discontinued">
@@ -40,16 +46,9 @@
 </ng-template>
 
 <p [ngSwitch]="counter">
-  <ng-template [ngSwitchCase]="1">
-    Counter min value.
-  </ng-template>
+  <ng-template [ngSwitchCase]="1"> Counter min value. </ng-template>
 
-  <ng-template [ngSwitchCase]="10">
-    Counter max value.
-  </ng-template>
+  <ng-template [ngSwitchCase]="10"> Counter max value. </ng-template>
 
-
-  <ng-template ngSwitchDefault>
-    Counter default value.
-  </ng-template>
-</p>
+  <ng-template ngSwitchDefault> Counter default value. </ng-template>
+</p> -->
