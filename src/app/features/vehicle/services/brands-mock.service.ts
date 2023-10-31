@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { GetBrandsListRequest } from '../models/get-brands-list-request';
 import { GetBrandsListResponse } from '../models/get-brands-list-response';
+import { BrandListItemDto } from '../models/brand-list-item-dto';
 // Ortam değişekenlerini kullanırken her zaman "environment" dosyasını kullanacağız.
 // Farklı ortamlara göre projeyi çalıştırdığımızda src/environments/environment.ts dosyası ilgili dosya ile değiştirilecektir.
 
@@ -17,6 +18,27 @@ export class BrandsMockService {
   constructor(private httpClient: HttpClient) {}
 
   getList(request: GetBrandsListRequest): Observable<GetBrandsListResponse> {
-    return this.httpClient.get<GetBrandsListResponse>(this.apiControllerUrl);
+    const newRequest = {
+      _page: request.pageIndex,
+      _limit: request.pageSize,
+    };
+
+    return this.httpClient
+      .get<BrandListItemDto[]>(this.apiControllerUrl, {
+        params: newRequest,
+      })
+      .pipe(
+        map((response) => {
+          const newResponse: GetBrandsListResponse = {
+            pageIndex: request.pageIndex,
+            pageSize: request.pageSize,
+            count: 10,
+            hasNextPage: true,
+            hasPreviousPage: false,
+            items: response,
+          };
+          return newResponse;
+        })
+      );
   }
 }
