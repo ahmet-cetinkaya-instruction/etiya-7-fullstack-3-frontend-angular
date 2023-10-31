@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { VehicleModule } from './features/vehicle/vehicle.module';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HomePageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
