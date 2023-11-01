@@ -1,5 +1,21 @@
 <ul *ngIf="brandsList" class="list-group">
-  <li *ngFor="let brand of brandsList.items" class="list-group-item">
+  <li
+    (click)="onBrandSelected(null)"
+    class="list-group-item brand-list-item"
+    [ngClass]="{
+      active: selectedBrandId === null
+    }"
+  >
+    All
+  </li>
+  <li
+    *ngFor="let brand of brandsList.items"
+    (click)="onBrandSelected(brand.id)"
+    class="list-group-item brand-list-item"
+    [ngClass]="{
+      active: selectedBrandId === brand.id
+    }"
+  >
     {{ brand.name }}
   </li>
 </ul>

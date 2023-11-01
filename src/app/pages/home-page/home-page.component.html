@@ -1,7 +1,12 @@
 <!-- <app-main-layout> -->
 <div class="row">
   <aside class="col-2">
-    <app-brand-list-group></app-brand-list-group>
+    <h1 class="display-6">Brands</h1>
+    <app-brand-list-group
+      [selectedBrandId]="selectedBrandId"
+      (selectBrand)="onBrandSelected($event)"
+    ></app-brand-list-group>
+    <!-- $event, event'in gönderdiği datayı geçmemizi sağlayan bir keyword'dür. -->
   </aside>
   <div class="col">TODO: MODEL ARAÇ LİSTESİ</div>
 </div>

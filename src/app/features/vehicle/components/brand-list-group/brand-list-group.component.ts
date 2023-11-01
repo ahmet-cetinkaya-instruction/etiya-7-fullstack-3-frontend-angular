@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BrandsMockService } from '../../services/brands-mock.service';
 import { GetBrandsListRequest } from '../../models/get-brands-list-request';
 import { PageResponse } from 'src/app/core/models/page-response';
@@ -11,6 +11,9 @@ import { BrandListItemDto } from '../../models/brand-list-item-dto';
 })
 export class BrandListGroupComponent implements OnInit {
   brandsList!: PageResponse<BrandListItemDto>; // : GetBrandListResponse
+  @Input() selectedBrandId: number | null = null;
+
+  @Output() selectBrand = new EventEmitter<number | null>();
 
   constructor(private brandsService: BrandsMockService) {} // İlerleyen günlerde servisleri de soyutluyor olacağız.
 
@@ -20,11 +23,13 @@ export class BrandListGroupComponent implements OnInit {
 
   getList(request: GetBrandsListRequest) {
     this.brandsService.getList(request).subscribe((response) => {
-      console.log(
-        '🚀 ~ file: brand-list-group.component.ts:23 ~ BrandListGroupComponent ~ this.brandsService.getList ~ response:',
-        response
-      );
       this.brandsList = response;
     });
+  }
+
+  onBrandSelected(brandId: number | null): void {
+    this.selectedBrandId = brandId;
+
+    this.selectBrand.emit(this.selectedBrandId);
   }
 }
