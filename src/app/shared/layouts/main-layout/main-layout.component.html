@@ -1,0 +1,14 @@
+<app-navbar></app-navbar>
+
+<!-- nav, main, aside, footer etc. = Semantic HTML Tags -->
+<main class="container my-4">
+  <!-- ng-content = Component'i kullanırken içine yerleştirilen template'i yerleştirir. -->
+  <ng-content></ng-content>
+
+  <!-- Child route'lar belirterek bir route hiyerarşi de belirtebiliriz.  -->
+  <router-outlet></router-outlet>
+
+  <!-- İkisinden sadece birini kullanmak gerekir, iç içe görüntüler oluşturmamak adına. -->
+</main>
+
+<app-footer></app-footer>
