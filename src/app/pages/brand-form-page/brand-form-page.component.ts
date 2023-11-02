@@ -22,6 +22,14 @@ export class BrandFormPageComponent implements OnInit {
   }
 
   onBrandDeleted() {
-    this.router.navigate(['management/brands/add']);
+    this.router.navigate(
+      [
+        this.brandIdToEdit ? '../../' : '../', // 1. Komut // Path "managment/brands/edit/1" ise iki üste giderek, "managment/brands/add" ise bir kademe üste giderek "managment/brands" route'a gider.
+        'add', // 2. Komut
+      ],
+      {
+        relativeTo: this.activatedRoute, // relative olarak path vereceksek hangi route'a göre olduğunu belirtmek gerekir.
+      }
+    );
   }
 }
