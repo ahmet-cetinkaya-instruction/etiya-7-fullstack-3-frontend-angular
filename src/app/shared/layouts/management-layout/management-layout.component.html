@@ -1,3 +1,14 @@
-<p>managment-layout works!</p>
-<ng-content></ng-content>
-<router-outlet></router-outlet>
+<app-navbar></app-navbar>
+
+<main class="container py-3">
+  <div class="row">
+    <aside class="col-2">
+      <p>managment-layout works!</p>
+    </aside>
+
+    <div class="col">
+      <ng-content></ng-content>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</main>

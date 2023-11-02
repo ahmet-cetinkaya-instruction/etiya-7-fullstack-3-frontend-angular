@@ -9,9 +9,10 @@ import { VehicleModule } from './features/vehicle/vehicle.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
+import { BrandFormPageComponent } from './pages/brand-form-page/brand-form-page.component';
 
 @NgModule({
-  declarations: [AppComponent, HomePageComponent, AboutPageComponent, ContactPageComponent],
+  declarations: [AppComponent, HomePageComponent, AboutPageComponent, ContactPageComponent, BrandFormPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

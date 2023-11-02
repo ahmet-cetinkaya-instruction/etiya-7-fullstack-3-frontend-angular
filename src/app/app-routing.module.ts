@@ -5,6 +5,7 @@ import { AboutPageComponent } from './pages/about-page/about-page.component';
 import { ContactPageComponent } from './pages/contact-page/contact-page.component';
 import { MainLayoutComponent } from './shared/layouts/main-layout/main-layout.component';
 import { ManagmentLayoutComponent as ManagementLayoutComponent } from './shared/layouts/management-layout/management-layout.component';
+import { BrandFormPageComponent } from './pages/brand-form-page/brand-form-page.component';
 
 const routes: Routes = [
   // 1. kademede route'lar için ilk karşılacağı router-outlet'in altına path'lara karşılık gelen componenti yerleştirir.
@@ -40,8 +41,8 @@ const routes: Routes = [
     component: ManagementLayoutComponent,
     children: [
       {
-        path: 'help',
-        component: AboutPageComponent,
+        path: 'brands/add',
+        component: BrandFormPageComponent,
       },
     ],
   },

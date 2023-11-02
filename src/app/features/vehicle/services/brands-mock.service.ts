@@ -5,6 +5,8 @@ import { Observable, map } from 'rxjs';
 import { GetBrandsListRequest } from '../models/get-brands-list-request';
 import { GetBrandsListResponse } from '../models/get-brands-list-response';
 import { BrandListItemDto } from '../models/brand-list-item-dto';
+import { AddBrandRequest } from '../models/add-brand-request';
+import { AddBrandResponse } from '../models/add-brand-response';
 // Ortam değişekenlerini kullanırken her zaman "environment" dosyasını kullanacağız.
 // Farklı ortamlara göre projeyi çalıştırdığımızda src/environments/environment.ts dosyası ilgili dosya ile değiştirilecektir.
 
@@ -41,5 +43,12 @@ export class BrandsMockService {
           return newResponse;
         })
       );
+  }
+
+  add(request: AddBrandRequest): Observable<AddBrandResponse> {
+    return this.httpClient.post<AddBrandResponse>(
+      this.apiControllerUrl,
+      request
+    );
   }
 }
