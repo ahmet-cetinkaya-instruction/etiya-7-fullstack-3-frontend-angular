@@ -18,10 +18,11 @@ export class BrandsMockService {
   constructor(private httpClient: HttpClient) {}
 
   getList(request: GetBrandsListRequest): Observable<GetBrandsListResponse> {
-    const newRequest = {
-      _page: request.pageIndex,
-      _limit: request.pageSize,
+    const newRequest: { [key: string]: string } = {
+      _page: request.pageIndex.toString(),
+      _limit: request.pageSize.toString(),
     };
+    if (request.searchByName) newRequest['name_like'] = request.searchByName;
 
     return this.httpClient
       .get<BrandListItemDto[]>(this.apiControllerUrl, {

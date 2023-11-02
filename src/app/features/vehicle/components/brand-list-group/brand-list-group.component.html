@@ -1,4 +1,14 @@
 <ul *ngIf="brandsList" class="list-group">
+  <li class="list-group-item">
+    <input
+      type="text"
+      [(ngModel)]="searchNameText"
+      (ngModelChange)="onBrandSearched()"
+      class="form-control"
+      placeholder="Search..."
+    />
+    <!-- ngModel bizim için bir state'i input ile çift yönlü olacak şekilde birbirine bağlaması için yardımcı bir directive. -->
+  </li>
   <li
     (click)="onBrandSelected(null)"
     class="list-group-item brand-list-item"
