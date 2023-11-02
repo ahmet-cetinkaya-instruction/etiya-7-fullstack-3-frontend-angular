@@ -25,5 +25,22 @@
     ></textarea>
   </div> -->
 
-  <button type="submit" class="btn btn-primary">Add</button>
+  <button
+    type="submit"
+    class="btn"
+    [ngClass]="{
+      'btn-primary': !isEditForm,
+      'btn-success': isEditForm
+    }"
+  >
+    {{ isEditForm ? "Edit" : "Add" }}
+  </button>
+  <button
+    *ngIf="isEditForm"
+    (click)="onBrandDeleted()"
+    type="button"
+    class="btn btn-danger ms-3"
+  >
+    Delete
+  </button>
 </form>

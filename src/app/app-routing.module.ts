@@ -44,6 +44,10 @@ const routes: Routes = [
         path: 'brands/add',
         component: BrandFormPageComponent,
       },
+      {
+        path: 'brands/edit/:brandId', // Route Param
+        component: BrandFormPageComponent,
+      }
     ],
   },
 ];

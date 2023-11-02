@@ -1,3 +1,6 @@
 <h1 class="display-6">Brand Form</h1>
 
-<app-brand-form></app-brand-form>
+<app-brand-form
+  [brandIdToEdit]="brandIdToEdit"
+  (brandDeleted)="onBrandDeleted()"
+></app-brand-form>
