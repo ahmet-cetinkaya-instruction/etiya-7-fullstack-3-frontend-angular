@@ -22,12 +22,14 @@ export class BrandListGroupComponent implements OnInit {
   constructor(private brandsService: BrandsMockService) {} // İlerleyen günlerde servisleri de soyutluyor olacağız.
 
   ngOnInit(): void {
-    this.getList({ pageIndex: 0, pageSize: 10 });
+    this.getList({ pageIndex: 0, pageSize: 3 });
     this.subscribeSearchNameText();
   }
 
   getList(request: GetBrandsListRequest) {
+    const tempPageItems = this.brandsList?.items ?? []
     this.brandsService.getList(request).subscribe((response) => {
+      response.items = [...tempPageItems, ...response.items]
       this.brandsList = response;
     });
   }
@@ -59,5 +61,13 @@ export class BrandListGroupComponent implements OnInit {
           searchByName: this.searchNameText,
         });
       });
+  }
+
+  onViewMoreClicked(): void {
+    this.getList({
+      pageIndex: this.brandsList.pageIndex + 1,
+      pageSize: this.brandsList.pageSize,
+      searchByName: this.searchNameText,
+    });
   }
 }

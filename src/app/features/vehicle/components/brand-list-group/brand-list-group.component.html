@@ -29,3 +29,11 @@
     {{ brand.name }}
   </li>
 </ul>
+<button
+  type="button"
+  (click)="onViewMoreClicked()"
+  [disabled]="!brandsList.hasNextPage"
+  class="btn border-0"
+>
+  View more
+</button>

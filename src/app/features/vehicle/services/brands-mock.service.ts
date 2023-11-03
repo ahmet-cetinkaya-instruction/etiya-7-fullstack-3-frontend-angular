@@ -32,9 +32,9 @@ export class BrandsMockService {
   }
 
   getList(request: GetBrandsListRequest): Observable<GetBrandsListResponse> {
-    const newRequest: { [key: string]: string } = {
-      _page: request.pageIndex.toString(),
-      _limit: request.pageSize.toString(),
+    const newRequest: { [key: string]: string | number } = {
+      _page: request.pageIndex + 1,
+      _limit: request.pageSize,
     };
     if (request.searchByName) newRequest['name_like'] = request.searchByName;
 
@@ -48,8 +48,8 @@ export class BrandsMockService {
             pageIndex: request.pageIndex,
             pageSize: request.pageSize,
             count: 10,
-            hasNextPage: true,
-            hasPreviousPage: false,
+            hasNextPage: request.pageIndex < 3,
+            hasPreviousPage: request.pageIndex > 0,
             items: response,
           };
           return newResponse;
