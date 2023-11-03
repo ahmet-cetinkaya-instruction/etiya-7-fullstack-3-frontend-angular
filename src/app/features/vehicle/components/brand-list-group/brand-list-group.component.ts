@@ -17,19 +17,20 @@ export class BrandListGroupComponent implements OnInit {
 
   @Output() selectBrand = new EventEmitter<number | null>();
   searchNameTextSubject = new Subject<void>();
-  TIMEOUT_SEARCH = 2000;
+  readonly TIMEOUT_SEARCH = 2000;
+  readonly PAGE_SIZE = 3;
 
   constructor(private brandsService: BrandsMockService) {} // İlerleyen günlerde servisleri de soyutluyor olacağız.
 
   ngOnInit(): void {
-    this.getList({ pageIndex: 0, pageSize: 3 });
+    this.getList({ pageIndex: 0, pageSize: this.PAGE_SIZE });
     this.subscribeSearchNameText();
   }
 
-  getList(request: GetBrandsListRequest) {
-    const tempPageItems = this.brandsList?.items ?? []
+  getList(request: GetBrandsListRequest, isAppend = false) {
+    const tempPageItems = isAppend ? this.brandsList?.items ?? [] : null;
     this.brandsService.getList(request).subscribe((response) => {
-      response.items = [...tempPageItems, ...response.items]
+      if (isAppend) response.items = [...tempPageItems!, ...response.items];
       this.brandsList = response;
     });
   }
@@ -57,17 +58,20 @@ export class BrandListGroupComponent implements OnInit {
       .subscribe(() => {
         this.getList({
           pageIndex: 0,
-          pageSize: 10,
+          pageSize: this.PAGE_SIZE,
           searchByName: this.searchNameText,
         });
       });
   }
 
   onViewMoreClicked(): void {
-    this.getList({
-      pageIndex: this.brandsList.pageIndex + 1,
-      pageSize: this.brandsList.pageSize,
-      searchByName: this.searchNameText,
-    });
+    this.getList(
+      {
+        pageIndex: this.brandsList.pageIndex + 1,
+        pageSize: this.brandsList.pageSize,
+        searchByName: this.searchNameText,
+      },
+      true
+    );
   }
 }
