@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BrandsMockService } from '../../services/brands-mock.service';
 import { AddBrandRequest } from '../../models/add-brand-request';
 import { UpdateBrandRequest } from '../../models/update-brand-request';
 import { DeleteBrandRequest } from '../../models/delete-brand-request';
+import { BrandsService } from '../../services/abstracts/brands-service';
 
 @Component({
   selector: 'app-brand-form',
@@ -30,7 +30,7 @@ export class BrandFormComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private brandsService: BrandsMockService
+    private brandsService: BrandsService
   ) {}
 
   ngOnInit(): void {

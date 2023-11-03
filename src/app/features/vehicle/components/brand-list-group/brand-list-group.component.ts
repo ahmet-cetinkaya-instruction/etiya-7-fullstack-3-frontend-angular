@@ -1,5 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { BrandsMockService } from '../../services/brands-mock.service';
+import { BrandsService } from './../../services/abstracts/brands-service';
+import {
+  Component,
+  EventEmitter, Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import { GetBrandsListRequest } from '../../models/get-brands-list-request';
 import { PageResponse } from 'src/app/core/models/page-response';
 import { BrandListItemDto } from '../../models/brand-list-item-dto';
@@ -20,7 +25,7 @@ export class BrandListGroupComponent implements OnInit {
   readonly TIMEOUT_SEARCH = 2000;
   readonly PAGE_SIZE = 3;
 
-  constructor(private brandsService: BrandsMockService) {} // İlerleyen günlerde servisleri de soyutluyor olacağız.
+  constructor(private brandsService: BrandsService) {}
 
   ngOnInit(): void {
     this.getList({ pageIndex: 0, pageSize: this.PAGE_SIZE });
