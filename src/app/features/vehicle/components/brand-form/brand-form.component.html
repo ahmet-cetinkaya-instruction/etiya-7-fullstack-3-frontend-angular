@@ -48,6 +48,7 @@
       'btn-primary': !isEditForm,
       'btn-success': isEditForm
     }"
+    [disabled]="brandForm.invalid || isLoading"
   >
     {{ isEditForm ? "Edit" : "Add" }}
   </button>
@@ -56,7 +57,12 @@
     (click)="onBrandDeleted()"
     type="button"
     class="btn btn-danger ms-3"
+    [disabled]="isLoading"
   >
     Delete
   </button>
+
+  <span *ngIf="isLoading" class="spinner-border text-primary ms-3" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </span>
 </form>
