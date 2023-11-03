@@ -7,8 +7,24 @@
       formControlName="name"
       id="brandNameInput"
       class="form-control"
+      [ngClass]="{
+        'is-invalid':
+          brandForm.get('name')!.invalid && brandForm.get('name')!.touched
+      }"
       placeholder="Enter brand name"
+      aria-describedby="brandNameInputFeedback"
     />
+    <div id="brandNameInputFeedback" class="invalid-feedback">
+      <div *ngIf="brandForm.get('name')!.errors?.['required']">
+        Brand name is required!
+      </div>
+
+      <div *ngIf="brandForm.get('name')!.errors?.['minlength']">
+        Brand name must be at least
+        {{ brandForm.get('name')!.errors?.['minlength'].requiredLength }}
+        characters!
+      </div>
+    </div>
     <!-- formControlName, FormGroup içerisindeki alanları input'lara, aynı key üzerinden, bağlamak için kullanıyoruz. -->
   </div>
 

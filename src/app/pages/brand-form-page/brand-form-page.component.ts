@@ -25,11 +25,12 @@ export class BrandFormPageComponent implements OnInit {
     this.router.navigate(
       [
         this.brandIdToEdit ? '../../' : '../', // 1. Komut // Path "managment/brands/edit/1" ise iki üste giderek, "managment/brands/add" ise bir kademe üste giderek "managment/brands" route'a gider.
-        'add', // 2. Komut
+        'add', // 2. Komut "managment/brands/add"
       ],
       {
         relativeTo: this.activatedRoute, // relative olarak path vereceksek hangi route'a göre olduğunu belirtmek gerekir.
       }
     );
+    //this.router.navigateByUrl('/managment/brands/add');
   }
 }
