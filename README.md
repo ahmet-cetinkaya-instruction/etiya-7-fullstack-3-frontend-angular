@@ -1,27 +1,15 @@
-# RentACar
+# Etiya 7.3 - Fullstack - Frontend Angular Training
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
+This repository is a snapshot created for documentation and knowledge-sharing purposes, capturing the content of a technical training delivered for a specific audience. The training focused on building a frontend application using Angular.
 
-## Development server
+## Main Covered Topics
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Angular Fundamentals**: Core concepts such as components, templates, data binding (`*ngIf`, `*ngFor`), and component communication (`@Input`, `@Output`).
+- **Routing and Navigation**: Setting up application routing, including lazy loading for feature modules and creating different layouts for public and management pages.
+- **Services and Dependency Injection**: Abstracting business logic into services and injecting them into components. Includes the use of mock services for development.
+- **Forms and Validation**: Creating and validating forms to handle user input, demonstrated through a brand management feature.
+- **Component-Based Architecture**: Structuring the application into features, shared components, and core modules.
+- **Practical Example**: A simple "rent-a-car" application to manage car brands, including features for adding, updating, deleting, and searching for brands.
+- **Technologies Used**: Angular, TypeScript, Bootstrap, RxJS.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+> Note: This repository is not intended for ongoing development; it is an archive of a specific training program and is provided for reference and knowledge sharing.
